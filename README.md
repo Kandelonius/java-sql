@@ -165,7 +165,11 @@ ORDER BY c.company_name
   </details>
 
 ```SQL
-
+SELECT c.contact_name, COUNT(o.order_id) as ordertotal
+FROM orders o JOIN customers c
+ON o.customer_id = c.customer_id
+GROUP BY c.contact_name
+ORDER BY ordertotal DESC
 ```
 
 * [ ] ***list orders grouped by customer's city showing the number of orders per city. Returns 69 Records with _Aachen_ showing 6 orders and _Albuquerque_ showing 18 orders***
@@ -176,7 +180,11 @@ ORDER BY c.company_name
   </details>
 
 ```SQL
-
+SELECT c.city, COUNT(o.order_id) as ordertotal
+FROM orders o JOIN customers c
+ON o.customer_id = c.customer_id
+GROUP BY c.city
+ORDER BY ordertotal DESC
 ```
 
 ## Data Normalization
