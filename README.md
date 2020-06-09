@@ -259,7 +259,10 @@ Table Name:Lifestyle
 * [ ] ***delete all customers that have no orders. Should delete 2 (or 3 if you haven't deleted the record added) records***
 
 ```SQL
-
+DELETE
+FROM customers USING Orders
+where customers.customer_id = orders.customer_id
+  and orders.order_id is NULL; <-- USING not JOIN -->
 ```
 
 * [ ] ***Create Database and Table: After creating the database, tables, columns, and constraint, generate the script necessary to recreate the database. This script is what you will submit for review***
@@ -277,7 +280,10 @@ Table Name:Lifestyle
   * account `budget` is required.
 
 ```SQL
-
+CREATE TABLE ACCOUNTS(id INTEGER, name TEXT, budget INTEGER);
+INSERT INTO ACCOUNTS VALUES(1, 'Jack', 4);
+INSERT INTO ACCOUNTS VALUES(2, 'Sally', 3);
+INSERT INTO ACCOUNTS VALUES(3, 'Sandy-Clause', 4);
 ```
 
 To see the script
